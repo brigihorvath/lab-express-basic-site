@@ -1,0 +1,33 @@
+// Require Express
+const express = require('express');
+
+// Express server handling requests and responses
+const app = express();
+
+// Make everything inside of public/ available
+app.use(express.static('public'));
+
+// our first Route:
+app.get('/', (request, response, next) =>
+  response.sendFile(__dirname + '/views/home-page.html')
+);
+
+app.get('/about', (request, response, next) =>
+  response.sendFile(__dirname + '/views/about.html')
+);
+
+app.get('/works', (request, response, next) =>
+  response.sendFile(__dirname + '/views/works.html')
+);
+
+app.get('/gallery', (request, response, next) =>
+  response.sendFile(__dirname + '/views/gallery.html')
+);
+
+// cat route:
+// app.get('/cat', (request, response, next) =>
+//   response.sendFile(__dirname + '/views/cat-page.html')
+// );
+
+// Server Started
+app.listen(3000, () => console.log('Server listening on port 3000!'));
